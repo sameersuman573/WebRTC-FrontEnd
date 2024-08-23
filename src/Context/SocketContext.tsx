@@ -38,12 +38,15 @@ setstream(stream)
 
 
 
-
   // The moment our clients collects the Room created events from the server , it will redirect the user to the room with the roomID 
   useEffect(() => {
 
     const userID = uuID();
-    const newPeerUser = new Peer(userID)
+    const newPeerUser = new Peer(userID , {
+      host: "localhost",
+      port: 9000,
+      path: "/myapp",
+    })
     setuser(newPeerUser)
 
     fetchUserFeed()
